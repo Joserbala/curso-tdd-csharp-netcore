@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FizzBuzz
 {
@@ -6,14 +7,8 @@ namespace FizzBuzz
     {
         public List<string> Enumerate()
         {
-            var enumerate = new List<string>();
-
-            for (var i = 1; i <= 100; i++)
-            {
-                enumerate.Add(Translate(i));
-            }
-
-            return enumerate;
+            var enumerate = Enumerable.Repeat("", 100);
+            return enumerate.Select((_, i) => Translate(i + 1)).ToList();
         }
 
         private static string Translate(int number)

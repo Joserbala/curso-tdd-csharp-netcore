@@ -10,25 +10,32 @@ namespace FizzBuzz
 
             for (var i = 1; i <= 100; i++)
             {
-                if (IsFizz(i) && IsBuzz(i))
-                {
-                    enumerate.Add("FizzBuzz");
-                }
-                else if (IsBuzz(i))
-                {
-                    enumerate.Add("Buzz");
-                }
-                else if (IsFizz(i))
-                {
-                    enumerate.Add("Fizz");
-                }
-                else
-                {
-                    enumerate.Add(i.ToString());
-                }
+                var result = Translate(i);
+
+                enumerate.Add(result);
             }
 
             return enumerate;
+        }
+
+        private static string Translate(int number)
+        {
+            if (IsFizz(number) && IsBuzz(number))
+            {
+                return "FizzBuzz";
+            }
+
+            if (IsBuzz(number))
+            {
+                return "Buzz";
+            }
+
+            if (IsFizz(number))
+            {
+                return "Fizz";
+            }
+
+            return number.ToString();
         }
 
         private static bool IsFizz(int number)

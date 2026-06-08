@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace FizzBuzz
 {
@@ -11,11 +10,11 @@ namespace FizzBuzz
 
             for (var i = 1; i <= 10; i++)
             {
-                if (i % 5 == 0)
+                if (IsBuzz(i))
                 {
                     enumerate.Add("Buzz");
                 }
-                else if (i % 3 == 0)
+                else if (IsFizz(i))
                 {
                     enumerate.Add("Fizz");
                 }
@@ -26,6 +25,16 @@ namespace FizzBuzz
             }
 
             return enumerate;
+        }
+
+        private static bool IsFizz(int number)
+        {
+            return number % 3 == 0;
+        }
+
+        private static bool IsBuzz(int number)
+        {
+            return number % 5 == 0;
         }
     }
 }

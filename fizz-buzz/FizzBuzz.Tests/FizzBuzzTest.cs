@@ -48,5 +48,16 @@ namespace FizzBuzz.Tests
 
             Assert.That(result[position - 1], Is.EqualTo("FizzBuzz"));
         }
+
+        [Test]
+        public void List_Has_100_Elements()
+        {
+            var fizzBuzz = new FizzBuzz();
+
+            var result = fizzBuzz.Enumerate();
+
+            Assert.That(result, Has.Count.EqualTo(100));
+            
+        }
     }
 }

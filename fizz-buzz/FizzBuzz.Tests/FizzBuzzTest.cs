@@ -16,14 +16,15 @@ namespace FizzBuzz.Tests
             Assert.That(result[position - 1], Is.EqualTo(expected));
         }
 
-        [Test]
-        public void Three_Returns_Fizz()
+        [TestCase(3)]
+        [TestCase(6)]
+        public void Multiples_Of_3_Are_Fizz(int position)
         {
             var fizzBuzz = new FizzBuzz();
 
             var result = fizzBuzz.Enumerate();
 
-            Assert.That(result[2], Is.EqualTo("Fizz"));
+            Assert.That(result[position - 1], Is.EqualTo("Fizz"));
         }
     }
 }

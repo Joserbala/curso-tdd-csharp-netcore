@@ -9,9 +9,9 @@ namespace FizzBuzz
         {
             var enumerate = new List<string>();
 
-            for (var i = 1; i <= 3; i++)
+            for (var i = 1; i <= 6; i++)
             {
-                if (i == 3)
+                if (i == 3 || i == 6)
                 {
                     enumerate.Add("Fizz");
                 }
@@ -20,7 +20,6 @@ namespace FizzBuzz
                     enumerate.Add(i.ToString());
                 }
             }
-
 
             return enumerate;
         }

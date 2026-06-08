@@ -10,9 +10,7 @@ namespace FizzBuzz
 
             for (var i = 1; i <= 100; i++)
             {
-                var result = Translate(i);
-
-                enumerate.Add(result);
+                enumerate.Add(Translate(i));
             }
 
             return enumerate;

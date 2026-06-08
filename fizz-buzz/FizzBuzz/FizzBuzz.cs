@@ -11,7 +11,11 @@ namespace FizzBuzz
 
             for (var i = 1; i <= 6; i++)
             {
-                if (i % 3 == 0)
+                if (i == 5)
+                {
+                    enumerate.Add("Buzz");
+                }
+                else if (i % 3 == 0)
                 {
                     enumerate.Add("Fizz");
                 }

@@ -8,9 +8,9 @@ namespace FizzBuzz
         {
             var enumerate = new List<string>();
 
-            for (var i = 1; i <= 15; i++)
+            for (var i = 1; i <= 30; i++)
             {
-                if (i == 15)
+                if (IsFizz(i) && IsBuzz(i))
                 {
                     enumerate.Add("FizzBuzz");
                 }

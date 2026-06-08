@@ -39,6 +39,7 @@ namespace FizzBuzz.Tests
         }
 
         [TestCase(15)]
+        [TestCase(30)]
         public void Multiples_Of_3_And_5_Are_FizzBuzz(int position)
         {
             var fizzBuzz = new FizzBuzz();

@@ -9,10 +9,18 @@ namespace FizzBuzz
         {
             var enumerate = new List<string>();
 
-            for (var i = 1; i <= 2; i++)
+            for (var i = 1; i <= 3; i++)
             {
-                enumerate.Add(i.ToString());
+                if (i == 3)
+                {
+                    enumerate.Add("Fizz");
+                }
+                else
+                {
+                    enumerate.Add(i.ToString());
+                }
             }
+
 
             return enumerate;
         }

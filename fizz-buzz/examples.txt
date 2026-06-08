@@ -1,0 +1,26 @@
+﻿Observable behaviour:
+
+Tenemos cierto números en el que se reemplazan ciertos múltiplos por su equivalente respecto a las reglas FizzBuzz.
+
+Input: 
+
+Output: Lista de números con su quivalente FizzBuzz.
+
+Smaller Behaviours:
+
+Según las reglas FizzBuzz:
+- Múltiplo de 3: "Fizz"
+- Múltiplo de 5: "Buzz"
+- Múltiplo de 3 y 5: "FizzBuzz"
+- Si no coincide: "Número"
+
+Examples:
+
+[x] () -> Posicion(result, 1) => "1"
+[x] () -> Posicion(result, 2) => "2"
+[x] () -> Posicion(result, 3) => "Fizz"
+[x] 6 -> "Fizz"
+[x] 5 -> "Buzz"
+[x] 10 -> "Buzz"
+[x] 15 -> "FizzBuzz"
+[x] Tiene 100 elementos

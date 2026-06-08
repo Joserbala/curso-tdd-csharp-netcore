@@ -28,6 +28,7 @@ namespace FizzBuzz.Tests
         }
 
         [TestCase(5)]
+        [TestCase(10)]
         public void Multiples_Of_5_Are_Buzz(int position)
         {
             var fizzBuzz = new FizzBuzz();

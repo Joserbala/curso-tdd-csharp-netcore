@@ -9,9 +9,9 @@ namespace FizzBuzz
         {
             var enumerate = new List<string>();
 
-            for (var i = 1; i <= 6; i++)
+            for (var i = 1; i <= 10; i++)
             {
-                if (i == 5)
+                if (i % 5 == 0)
                 {
                     enumerate.Add("Buzz");
                 }

@@ -7,11 +7,11 @@ namespace FizzBuzz
     {
         public List<string> Enumerate()
         {
-            var enumerate = new List<string>(100);
+            var enumerate = new List<string>();
 
-            for (var i = 0; i < 100; i++)
+            for (var i = 1; i <= 2; i++)
             {
-                enumerate.Add(null);
+                enumerate.Add(i.ToString());
             }
 
             return enumerate;

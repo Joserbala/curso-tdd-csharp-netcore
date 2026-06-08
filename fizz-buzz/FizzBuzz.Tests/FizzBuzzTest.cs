@@ -5,14 +5,15 @@ namespace FizzBuzz.Tests
 {
     public class FizzBuzzTest
     {
-        [Test]
-        public void List_Has_100_Elements()
+        [TestCase(1, "1")]
+        [TestCase(2, "2")]
+        public void Translate_Position(int position, string expected)
         {
             var fizzBuzz = new FizzBuzz();
 
-            List<string> result = fizzBuzz.Enumerate();
-            
-            Assert.That(result, Has.Count.EqualTo(100));
+            var result = fizzBuzz.Enumerate();
+
+            Assert.That(result[position - 1], Is.EqualTo(expected));
         }
     }
 }

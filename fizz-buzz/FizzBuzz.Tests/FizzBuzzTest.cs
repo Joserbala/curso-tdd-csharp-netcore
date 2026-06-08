@@ -37,5 +37,15 @@ namespace FizzBuzz.Tests
 
             Assert.That(result[position - 1], Is.EqualTo("Buzz"));
         }
+
+        [TestCase(15)]
+        public void Multiples_Of_3_And_5_Are_FizzBuzz(int position)
+        {
+            var fizzBuzz = new FizzBuzz();
+
+            var result = fizzBuzz.Enumerate();
+
+            Assert.That(result[position - 1], Is.EqualTo("FizzBuzz"));
+        }
     }
 }

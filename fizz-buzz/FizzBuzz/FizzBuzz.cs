@@ -11,7 +11,7 @@ namespace FizzBuzz
 
             for (var i = 1; i <= 6; i++)
             {
-                if (i == 3 || i == 6)
+                if (i % 3 == 0)
                 {
                     enumerate.Add("Fizz");
                 }

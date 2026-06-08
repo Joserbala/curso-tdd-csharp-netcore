@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace FizzBuzz.Tests
@@ -5,9 +6,13 @@ namespace FizzBuzz.Tests
     public class FizzBuzzTest
     {
         [Test]
-        public void My_First_Test()
+        public void List_Has_100_Elements()
         {
-            Assert.That(false, Is.True);
+            var fizzBuzz = new FizzBuzz();
+
+            List<string> result = fizzBuzz.Enumerate();
+            
+            Assert.That(result, Has.Count.EqualTo(100));
         }
     }
 }

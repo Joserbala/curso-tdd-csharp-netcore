@@ -15,3 +15,18 @@ This kata shows the importance of:
 * Selecting the test order
 
 * Having good assertions (testing only one thing and being always true)
+
+## Tools
+
+##### Install dependencies and tools
+
+`dotnet restore`
+
+#### Run this command to execute coverage:
+
+`dotnet msbuild -target:Coverlet`
+
+
+##### Mutation testing
+
+`dotnet stryker --open-report`

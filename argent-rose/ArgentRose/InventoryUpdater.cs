@@ -11,9 +11,12 @@ public static class InventoryUpdater
 			return products;
 		}
 
-		var product = products[0];
+		for (var i = 0; i < products.Count; i++)
+		{
+			var product = products[i];
 
-		products[0] = Product.Update(product);
+			products[i] = Product.Update(product);
+		}
 
 		return products;
 	}

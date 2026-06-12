@@ -75,4 +75,17 @@ public class ArgentRoseTest
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
+
+	[Test]
+	public void Inventory_With_More_Than_One_Product_Updates()
+	{
+		var product = new Product(7, 4, "Theatre Passes");
+		var anotherProduct = new Product(3, 4, "Theatre Passes");
+
+		var products = InventoryUpdater.Execute([product, anotherProduct]);
+
+		var updatedProduct = new Product(6, 5, "Theatre Passes");
+		var anotherUpdatedProduct = new Product(2, 7, "Theatre Passes");
+		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct, anotherUpdatedProduct }));
+	}
 }

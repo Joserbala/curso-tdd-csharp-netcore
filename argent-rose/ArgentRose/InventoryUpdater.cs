@@ -12,9 +12,16 @@ public static class InventoryUpdater
 		}
 
 		var product = products[0];
-		Product updatedProduct;
 		var updatedSellIn = product.SellIn - 1;
 
+		products[0] = UpdateProduct(product, updatedSellIn);
+
+		return products;
+	}
+
+	static Product UpdateProduct(Product product, int updatedSellIn)
+	{
+		Product updatedProduct;
 		if (Product.HasExpired(product))
 		{
 			updatedProduct = Product.ExpiredProduct(updatedSellIn, product);
@@ -31,9 +38,7 @@ public static class InventoryUpdater
 		{
 			updatedProduct = new Product(updatedSellIn, product.Quality + 1, product.Description);
 		}
-		
-		products[0] = updatedProduct;
 
-		return products;
+		return updatedProduct;
 	}
 }

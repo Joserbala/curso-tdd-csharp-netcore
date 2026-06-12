@@ -17,24 +17,19 @@ public static class InventoryUpdater
 		if (Product.HasExpired(product))
 		{
 			products[0] = Product.ExpiredProduct(updatedSellIn, product);
-			
-			return products;
 		}
-
-		if (Product.IsMoreValuable(product))
+		else if (Product.IsMoreValuable(product))
 		{
 			products[0] = Product.MoreValuableProduct(updatedSellIn, product);
-
-			return products;
 		}
-
-		if (product.Quality + 1 >= 50)
+		else if (product.Quality + 1 >= 50)
 		{
 			products[0] = new Product(updatedSellIn, 50, product.Description);
-			return products;
 		}
-
-		products[0] = new Product(updatedSellIn, product.Quality + 1, product.Description);
+		else
+		{
+			products[0] = new Product(updatedSellIn, product.Quality + 1, product.Description);
+		}
 
 		return products;
 	}

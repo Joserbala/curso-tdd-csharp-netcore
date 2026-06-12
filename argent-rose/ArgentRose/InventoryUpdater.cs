@@ -16,14 +16,14 @@ public static class InventoryUpdater
 
 		if (Product.HasExpired(product))
 		{
-			products[0] = new Product(updatedSellIn, 0, product.Description);
+			products[0] = Product.ExpiredProduct(updatedSellIn, product);
 			
 			return products;
 		}
 
 		if (Product.IsMoreValuable(product))
 		{
-			products[0] = new Product(updatedSellIn, product.Quality + 3, product.Description);
+			products[0] = Product.MoreValuableProduct(updatedSellIn, product);
 
 			return products;
 		}

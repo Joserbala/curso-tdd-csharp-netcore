@@ -29,4 +29,14 @@ public record Product
 	{
 		return product.SellIn <= 6;
 	}
+
+	internal static Product MoreValuableProduct(int updatedSellIn, Product product)
+	{
+		return new Product(updatedSellIn, product.Quality + 3, product.Description);
+	}
+
+	internal static Product ExpiredProduct(int updatedSellIn, Product product)
+	{
+		return new Product(updatedSellIn, 0, product.Description);
+	}
 }

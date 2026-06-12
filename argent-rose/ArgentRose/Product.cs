@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ArgentRose;
+﻿namespace ArgentRose;
 
 public record Product
 {
@@ -55,10 +53,5 @@ public record Product
 	static Product ExpiredProduct(int updatedSellIn, Product product)
 	{
 		return new Product(updatedSellIn, 0, product.Description);
-	}
-
-	public override int GetHashCode()
-	{
-		return HashCode.Combine(SellIn, Quality, Description);
 	}
 }

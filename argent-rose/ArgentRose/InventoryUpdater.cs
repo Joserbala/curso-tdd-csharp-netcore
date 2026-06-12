@@ -10,14 +10,14 @@ public static class InventoryUpdater
 		{
 			return products;
 		}
+		
+		var updatedProducts = new List<Product>();
 
-		for (var i = 0; i < products.Count; i++)
+		foreach (var product in products)
 		{
-			var product = products[i];
-
-			products[i] = Product.Update(product);
+			updatedProducts.Add(Product.Update(product));
 		}
 
-		return products;
+		return updatedProducts;
 	}
 }

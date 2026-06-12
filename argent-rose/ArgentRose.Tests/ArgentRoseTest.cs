@@ -27,7 +27,8 @@ public class ArgentRoseTest
 	[TestCase(6, 5, 4, 7)]
 	[TestCase(5, 4, 4, 7)]
 	[TestCase(5, 4, 7, 10)]
-	public void SellIn_With_Six_Or_Less_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality, int finalQuality)
+	[TestCase(1, 0, 5, 8)]
+	public void SellIn_Between_One_And_Six_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality, int finalQuality)
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
 

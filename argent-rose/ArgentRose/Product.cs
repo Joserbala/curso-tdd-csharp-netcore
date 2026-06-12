@@ -22,14 +22,14 @@ public record Product
 			return ExpiredProduct(updatedSellIn, product);
 		}
 
+		if (product.Quality + 1 >= 50 || product.Quality + 3 >= 50)
+		{
+			return new Product(updatedSellIn, 50, product.Description);
+		}
+
 		if (IsMoreValuable(product))
 		{
 			return MoreValuableProduct(updatedSellIn, product);
-		}
-
-		if (product.Quality + 1 >= 50)
-		{
-			return new Product(updatedSellIn, 50, product.Description);
 		}
 
 		return new Product(updatedSellIn, product.Quality + 1, product.Description);

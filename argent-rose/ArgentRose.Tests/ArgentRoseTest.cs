@@ -62,4 +62,15 @@ public class ArgentRoseTest
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
+
+	[Test]
+	public void SellIn_Between_One_And_Six_Updates_Quality_No_Higher_Than_Fifty()
+	{
+		var product = new Product(4, 48, "Theatre Passes");
+
+		var products = InventoryUpdater.Execute([product]);
+
+		var updatedProduct = new Product(3, 50, "Theatre Passes");
+		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
+	}
 }

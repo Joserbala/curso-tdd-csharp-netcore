@@ -13,7 +13,7 @@ public static class InventoryUpdater
 
 		var updatedSellIn = products[0].SellIn - 1;
 
-		if (products[0].SellIn <= 0)
+		if (HasExpired(products[0]))
 		{
 			products[0] = new Product(updatedSellIn, 0, products[0].Description);
 			
@@ -30,6 +30,11 @@ public static class InventoryUpdater
 		products[0] = new Product(updatedSellIn, products[0].Quality + 1, products[0].Description);
 
 		return products;
+	}
+
+	static bool HasExpired(Product product)
+	{
+		return product.SellIn <= 0;
 	}
 
 	static bool IsMoreValuable(Product product)

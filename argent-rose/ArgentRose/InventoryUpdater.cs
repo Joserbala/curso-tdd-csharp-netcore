@@ -2,9 +2,9 @@
 
 namespace ArgentRose;
 
-public class Inventory
+public static class InventoryUpdater
 {
-	public List<Product> Update(List<Product> products)
+	public static List<Product> Execute(List<Product> products)
 	{
 		if (products.Count == 0)
 		{

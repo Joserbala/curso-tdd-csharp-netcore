@@ -81,3 +81,7 @@ Boundary between IP3 and IP4:
 
 From IP1: on-point 47, off-point 48
 From IP2: on-point 48, off-point 47
+
+In SP3:
+
+- IP5: quality = 0 => quality' = 0

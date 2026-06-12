@@ -11,40 +11,31 @@ public static class InventoryUpdater
 			return products;
 		}
 
-		var updatedSellIn = products[0].SellIn - 1;
+		var product = products[0];
+		var updatedSellIn = product.SellIn - 1;
 
-		if (HasExpired(products[0]))
+		if (Product.HasExpired(product))
 		{
-			products[0] = new Product(updatedSellIn, 0, products[0].Description);
+			products[0] = new Product(updatedSellIn, 0, product.Description);
 			
 			return products;
 		}
 
-		if (IsMoreValuable(products[0]))
+		if (Product.IsMoreValuable(product))
 		{
-			products[0] = new Product(updatedSellIn, products[0].Quality + 3, products[0].Description);
+			products[0] = new Product(updatedSellIn, product.Quality + 3, product.Description);
 
 			return products;
 		}
 
-		if (products[0].Quality + 1 >= 50)
+		if (product.Quality + 1 >= 50)
 		{
-			products[0] = new Product(updatedSellIn, 50, products[0].Description);
+			products[0] = new Product(updatedSellIn, 50, product.Description);
 			return products;
 		}
 
-		products[0] = new Product(updatedSellIn, products[0].Quality + 1, products[0].Description);
+		products[0] = new Product(updatedSellIn, product.Quality + 1, product.Description);
 
 		return products;
-	}
-
-	static bool HasExpired(Product product)
-	{
-		return product.SellIn <= 0;
-	}
-
-	static bool IsMoreValuable(Product product)
-	{
-		return product.SellIn <= 6;
 	}
 }

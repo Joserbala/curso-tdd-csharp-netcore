@@ -24,15 +24,16 @@ public class ArgentRoseTest
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
 
-	[TestCase(6, 5)]
-	[TestCase(5, 4)]
-	public void SellIn_With_Six_Or_Less_Updates_Quality_By_3(int sellIn, int finalSellIn)
+	[TestCase(6, 5, 4, 7)]
+	[TestCase(5, 4, 4, 7)]
+	[TestCase(5, 4, 7, 10)]
+	public void SellIn_With_Six_Or_Less_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality, int finalQuality)
 	{
-		var product = new Product(sellIn, 4, "Theatre Passes");
+		var product = new Product(sellIn, quality, "Theatre Passes");
 		
 		var products = InventoryUpdater.Execute([product]);
 		
-		var updatedProduct = new Product(finalSellIn, 7, "Theatre Passes");
+		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
 }

@@ -22,24 +22,21 @@ public static class InventoryUpdater
 	{
 		var updatedSellIn = product.SellIn - 1;
 
-		Product updatedProduct;
 		if (Product.HasExpired(product))
 		{
-			updatedProduct = Product.ExpiredProduct(updatedSellIn, product);
-		}
-		else if (Product.IsMoreValuable(product))
-		{
-			updatedProduct = Product.MoreValuableProduct(updatedSellIn, product);
-		}
-		else if (product.Quality + 1 >= 50)
-		{
-			updatedProduct = new Product(updatedSellIn, 50, product.Description);
-		}
-		else
-		{
-			updatedProduct = new Product(updatedSellIn, product.Quality + 1, product.Description);
+			return Product.ExpiredProduct(updatedSellIn, product);
 		}
 
-		return updatedProduct;
+		if (Product.IsMoreValuable(product))
+		{
+			return Product.MoreValuableProduct(updatedSellIn, product);
+		}
+
+		if (product.Quality + 1 >= 50)
+		{
+			return new Product(updatedSellIn, 50, product.Description);
+		}
+
+		return new Product(updatedSellIn, product.Quality + 1, product.Description);
 	}
 }

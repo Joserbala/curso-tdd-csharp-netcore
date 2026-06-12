@@ -1,18 +1,8 @@
 ﻿namespace ArgentRose;
 
-public record Product
+public record Product(int SellIn, int Quality, string Description)
 {
 	const int MaximumQuality = 50;
-	int SellIn { get; }
-	int Quality { get; }
-	string Description { get; }
-
-	public Product(int sellIn, int quality, string description)
-	{
-		SellIn = sellIn;
-		Quality = quality;
-		Description = description;
-	}
 
 	internal static Product Update(Product product)
 	{

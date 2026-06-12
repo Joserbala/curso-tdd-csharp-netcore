@@ -13,6 +13,13 @@ public static class InventoryUpdater
 
 		var updatedSellIn = products[0].SellIn - 1;
 
+		if (products[0].SellIn <= 0)
+		{
+			products[0] = new Product(updatedSellIn, 0, products[0].Description);
+			
+			return products;
+		}
+
 		if (IsMoreValuable(products[0]))
 		{
 			products[0] = new Product(updatedSellIn, products[0].Quality + 3, products[0].Description);

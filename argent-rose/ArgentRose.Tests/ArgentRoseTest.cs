@@ -30,10 +30,21 @@ public class ArgentRoseTest
 	public void SellIn_With_Six_Or_Less_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality, int finalQuality)
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
-		
+
 		var products = InventoryUpdater.Execute([product]);
-		
+
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
+		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
+	}
+
+	[Test]
+	public void SellIn_With_Zero_Or_Less_Updates_Quality_To_Zero()
+	{
+		var product = new Product(0, 4, "Theatre Passes");
+
+		var products = InventoryUpdater.Execute([product]);
+
+		var updatedProduct = new Product(-1, 0, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
 }

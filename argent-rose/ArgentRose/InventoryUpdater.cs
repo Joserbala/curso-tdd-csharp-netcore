@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ArgentRose;
 
@@ -10,14 +11,7 @@ public static class InventoryUpdater
 		{
 			return products;
 		}
-		
-		var updatedProducts = new List<Product>();
 
-		foreach (var product in products)
-		{
-			updatedProducts.Add(Product.Update(product));
-		}
-
-		return updatedProducts;
+		return products.Select(Product.Update).ToList();
 	}
 }

@@ -8,7 +8,7 @@ public class ArgentRoseTest
 	[Test]
 	public void Empty_Inventory_Returns_Empty_Inventory()
 	{
-		var products = InventoryUpdater.Execute([]);
+		var products = InventoryUpdater.Execute((List<Product>)[]);
 
 		Assert.That(products.Count, Is.EqualTo(0));
 	}
@@ -18,7 +18,7 @@ public class ArgentRoseTest
 	{
 		var product = new Product(7, 4, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product]);
+		var products = InventoryUpdater.Execute((List<Product>)[product]);
 
 		var updatedProduct = new Product(6, 5, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
@@ -33,7 +33,7 @@ public class ArgentRoseTest
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product]);
+		var products = InventoryUpdater.Execute((List<Product>)[product]);
 
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
@@ -44,7 +44,7 @@ public class ArgentRoseTest
 	{
 		var product = new Product(0, 4, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product]);
+		var products = InventoryUpdater.Execute((List<Product>)[product]);
 
 		var updatedProduct = new Product(-1, 0, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
@@ -57,7 +57,7 @@ public class ArgentRoseTest
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product]);
+		var products = InventoryUpdater.Execute((List<Product>)[product]);
 
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
@@ -70,7 +70,7 @@ public class ArgentRoseTest
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product]);
+		var products = InventoryUpdater.Execute((List<Product>)[product]);
 
 		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
@@ -82,7 +82,7 @@ public class ArgentRoseTest
 		var product = new Product(7, 4, "Theatre Passes");
 		var anotherProduct = new Product(3, 4, "Theatre Passes");
 
-		var products = InventoryUpdater.Execute([product, anotherProduct]);
+		var products = InventoryUpdater.Execute((List<Product>)[product, anotherProduct]);
 
 		var updatedProduct = new Product(6, 5, "Theatre Passes");
 		var anotherUpdatedProduct = new Product(2, 7, "Theatre Passes");

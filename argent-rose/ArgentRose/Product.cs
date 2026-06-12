@@ -22,9 +22,9 @@ public record Product
 			return ExpiredProduct(updatedSellIn, product);
 		}
 
-		if (product.Quality + 1 >= 50 || product.Quality + 3 >= 50)
+		if (WouldQualityBeAtTheMaximum(product))
 		{
-			return new Product(updatedSellIn, 50, product.Description);
+			return MaximumQualityProduct(product, updatedSellIn);
 		}
 
 		if (IsMoreValuable(product))
@@ -33,6 +33,16 @@ public record Product
 		}
 
 		return new Product(updatedSellIn, product.Quality + 1, product.Description);
+	}
+
+	static Product MaximumQualityProduct(Product product, int updatedSellIn)
+	{
+		return new Product(updatedSellIn, 50, product.Description);
+	}
+
+	static bool WouldQualityBeAtTheMaximum(Product product)
+	{
+		return product.Quality + 1 >= 50 || product.Quality + 3 >= 50;
 	}
 
 	static bool HasExpired(Product product)

@@ -4,9 +4,9 @@ namespace ArgentRose;
 
 public class Product
 {
-	internal int SellIn { get; set; }
-	internal int Quality { get; set; }
-	private string Description { get; }
+	internal int SellIn { get; }
+	internal int Quality { get; }
+	internal string Description { get; }
 
 	public Product(int sellIn, int quality, string description)
 	{

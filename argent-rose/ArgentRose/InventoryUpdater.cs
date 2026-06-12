@@ -12,24 +12,27 @@ public static class InventoryUpdater
 		}
 
 		var product = products[0];
+		Product updatedProduct;
 		var updatedSellIn = product.SellIn - 1;
 
 		if (Product.HasExpired(product))
 		{
-			products[0] = Product.ExpiredProduct(updatedSellIn, product);
+			updatedProduct = Product.ExpiredProduct(updatedSellIn, product);
 		}
 		else if (Product.IsMoreValuable(product))
 		{
-			products[0] = Product.MoreValuableProduct(updatedSellIn, product);
+			updatedProduct = Product.MoreValuableProduct(updatedSellIn, product);
 		}
 		else if (product.Quality + 1 >= 50)
 		{
-			products[0] = new Product(updatedSellIn, 50, product.Description);
+			updatedProduct = new Product(updatedSellIn, 50, product.Description);
 		}
 		else
 		{
-			products[0] = new Product(updatedSellIn, product.Quality + 1, product.Description);
+			updatedProduct = new Product(updatedSellIn, product.Quality + 1, product.Description);
 		}
+		
+		products[0] = updatedProduct;
 
 		return products;
 	}

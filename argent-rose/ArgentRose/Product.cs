@@ -4,9 +4,9 @@ namespace ArgentRose;
 
 public record Product
 {
-	internal int SellIn { get; }
-	internal int Quality { get; }
-	internal string Description { get; }
+	int SellIn { get; }
+	int Quality { get; }
+	string Description { get; }
 
 	public Product(int sellIn, int quality, string description)
 	{
@@ -15,28 +15,50 @@ public record Product
 		Description = description;
 	}
 
-	public override int GetHashCode()
+	internal static Product Update(Product product)
 	{
-		return HashCode.Combine(SellIn, Quality, Description);
+		var updatedSellIn = product.SellIn - 1;
+
+		if (HasExpired(product))
+		{
+			return ExpiredProduct(updatedSellIn, product);
+		}
+
+		if (IsMoreValuable(product))
+		{
+			return MoreValuableProduct(updatedSellIn, product);
+		}
+
+		if (product.Quality + 1 >= 50)
+		{
+			return new Product(updatedSellIn, 50, product.Description);
+		}
+
+		return new Product(updatedSellIn, product.Quality + 1, product.Description);
 	}
 
-	internal static bool HasExpired(Product product)
+	static bool HasExpired(Product product)
 	{
 		return product.SellIn <= 0;
 	}
 
-	internal static bool IsMoreValuable(Product product)
+	static bool IsMoreValuable(Product product)
 	{
 		return product.SellIn <= 6;
 	}
 
-	internal static Product MoreValuableProduct(int updatedSellIn, Product product)
+	static Product MoreValuableProduct(int updatedSellIn, Product product)
 	{
 		return new Product(updatedSellIn, product.Quality + 3, product.Description);
 	}
 
-	internal static Product ExpiredProduct(int updatedSellIn, Product product)
+	static Product ExpiredProduct(int updatedSellIn, Product product)
 	{
 		return new Product(updatedSellIn, 0, product.Description);
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(SellIn, Quality, Description);
 	}
 }

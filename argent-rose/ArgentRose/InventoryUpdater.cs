@@ -11,6 +11,12 @@ public static class InventoryUpdater
 			return products;
 		}
 
+		if (products[0].SellIn <= 6)
+		{
+			products[0] = new Product(5, 7, "Theatre Passes");
+			return products;
+		}
+
 		products[0] = new Product(products[0].SellIn - 1, products[0].Quality + 1, products[0].Description);
 
 		return products;

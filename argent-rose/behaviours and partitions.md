@@ -75,7 +75,7 @@ Boundary between IP1 and IP2: --- 49 | 50 ---
 - From IP2: on-point 50, off-point 49
 
 ```json5
-[{sellIn: 10, quality: 4, description: 'Theatre Passes'] => [{sellIn: 9, quality: 5, description: 'Theatre Passes']
+[{sellIn: 10, quality: 49, description: 'Theatre Passes'] => [{sellIn: 9, quality: 50, description: 'Theatre Passes']
 [{sellIn: 10, quality: 50, description: 'Theatre Passes'] => [{sellIn: 9, quality: 50, description: 'Theatre Passes']
 ```
 

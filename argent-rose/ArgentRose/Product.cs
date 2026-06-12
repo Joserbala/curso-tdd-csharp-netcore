@@ -2,6 +2,7 @@
 
 public record Product
 {
+	const int MaximumQuality = 50;
 	int SellIn { get; }
 	int Quality { get; }
 	string Description { get; }
@@ -37,12 +38,12 @@ public record Product
 
 	static Product MaximumQualityProduct(Product product, int updatedSellIn)
 	{
-		return new Product(updatedSellIn, 50, product.Description);
+		return new Product(updatedSellIn, MaximumQuality, product.Description);
 	}
 
 	static bool WouldQualityBeAtTheMaximum(Product product)
 	{
-		return product.Quality + 1 >= 50 || product.Quality + 3 >= 50;
+		return product.Quality + 1 >= MaximumQuality || product.Quality + 3 >= MaximumQuality;
 	}
 
 	static bool HasExpired(Product product)

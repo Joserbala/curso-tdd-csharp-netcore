@@ -28,7 +28,8 @@ public class ArgentRoseTest
 	[TestCase(5, 4, 4, 7)]
 	[TestCase(5, 4, 7, 10)]
 	[TestCase(1, 0, 5, 8)]
-	public void SellIn_Between_One_And_Six_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality, int finalQuality)
+	public void SellIn_Between_One_And_Six_Updates_Quality_By_3(int sellIn, int finalSellIn, int quality,
+		int finalQuality)
 	{
 		var product = new Product(sellIn, quality, "Theatre Passes");
 
@@ -46,6 +47,18 @@ public class ArgentRoseTest
 		var products = InventoryUpdater.Execute([product]);
 
 		var updatedProduct = new Product(-1, 0, "Theatre Passes");
+		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
+	}
+
+	[TestCase(10, 9, 50, 50)]
+	public void SellIn_Higher_Than_Six_Updates_Quality_No_Higher_Than_Fifty(
+		int sellIn, int finalSellIn, int quality, int finalQuality)
+	{
+		var product = new Product(sellIn, quality, "Theatre Passes");
+
+		var products = InventoryUpdater.Execute([product]);
+
+		var updatedProduct = new Product(finalSellIn, finalQuality, "Theatre Passes");
 		Assert.That(products, Is.EquivalentTo(new List<Product> { updatedProduct }));
 	}
 }

@@ -13,7 +13,8 @@ public static class InventoryUpdater
 
 		if (products[0].SellIn <= 6)
 		{
-			products[0] = new Product(5, 7, "Theatre Passes");
+			products[0] = new Product(products[0].SellIn - 1, 7, "Theatre Passes");
+
 			return products;
 		}
 

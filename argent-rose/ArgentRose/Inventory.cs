@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace ArgentRose;
 
@@ -11,7 +10,7 @@ public class Inventory
 		{
 			return products;
 		}
-		
+
 		products[0] = new Product(products[0].SellIn - 1, products[0].Quality + 1, products[0].Description);
 
 		return products;

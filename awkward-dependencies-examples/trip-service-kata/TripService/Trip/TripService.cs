@@ -7,28 +7,25 @@ public class TripService
 {
     public List<Trip> GetTripsByUser(User.User user)
     {
-        List<Trip> tripList = new List<Trip>();
-        User.User loggedUser = UserSession.GetInstance().GetLoggedUser();
-        bool isFriend = false;
-        if (loggedUser != null)
-        {
-            foreach(User.User friend in user.GetFriends())
-            {
-                if (friend.Equals(loggedUser))
-                {
-                    isFriend = true;
-                    break;
-                }
-            }
-            if (isFriend)
-            {
-                tripList = TripDAO.FindTripsByUser(user);
-            }
-            return tripList;
-        }
-        else
+        var tripList = new List<Trip>();
+        var loggedUser = UserSession.GetInstance().GetLoggedUser();
+        var isFriend = false;
+
+        if (loggedUser == null)
         {
             throw new UserNotLoggedInException();
         }
+
+        if (Enumerable.Contains(user.GetFriends(), loggedUser))
+        {
+            isFriend = true;
+        }
+
+        if (isFriend)
+        {
+            tripList = TripDAO.FindTripsByUser(user);
+        }
+
+        return tripList;
     }
 }

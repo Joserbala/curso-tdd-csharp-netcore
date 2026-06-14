@@ -1,0 +1,34 @@
+﻿@startuml
+
+skin rose
+
+actor test
+storage stub as stub1 #line.dashed
+storage stub as stub2 #line.dashed
+storage UserSessionApi
+storage TripDAO
+
+storage "Test Scope" {
+    rectangle TripService
+    agent UserSession
+    agent Trip
+}
+
+card card [
+FIRS' violations
+---
+Fast: TripDAO
+Isolation: UserSession
+]
+
+test --> TripService : user
+
+TripService --> UserSession
+stub1 ..> UserSession
+UserSessionApi ..> UserSession
+
+TripService --> Trip
+stub2 ..> Trip
+TripDAO ..> Trip
+
+@enduml

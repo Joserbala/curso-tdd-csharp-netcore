@@ -12,8 +12,7 @@ namespace TirePressureVariation.Test
         {
             var safetyRange = new SafetyRange(17, 21);
             var notifier = Substitute.For<INotifier>(); // spy
-            var pressureSensor = Substitute.For<IPressureSensor>(); // stub
-            pressureSensor.Get().Returns(16);
+            var pressureSensor = GetPressureSensorWith(16);
             var pressureMonitorization = new PressureMonitorization(safetyRange, notifier, pressureSensor);
 
             pressureMonitorization.Check();
@@ -26,13 +25,19 @@ namespace TirePressureVariation.Test
         {
             var safetyRange = new SafetyRange(17, 21);
             var notifier = Substitute.For<INotifier>(); // spy
-            var pressureSensor = Substitute.For<IPressureSensor>(); // stub
-            pressureSensor.Get().Returns(17);
+            var pressureSensor = GetPressureSensorWith(17);
             var pressureMonitorization = new PressureMonitorization(safetyRange, notifier, pressureSensor);
 
             pressureMonitorization.Check();
 
             notifier.DidNotReceiveWithAnyArgs().Send(Arg.Any<string>());
+        }
+
+        static IPressureSensor GetPressureSensorWith(int pressure)
+        {
+            var pressureSensor = Substitute.For<IPressureSensor>(); // stub
+            pressureSensor.Get().Returns(pressure);
+            return pressureSensor;
         }
     }
 }

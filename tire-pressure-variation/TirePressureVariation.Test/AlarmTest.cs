@@ -49,11 +49,10 @@ namespace TirePressureVariation.Test
         [Test]
         public void Alarm_Activated_With_Dangerous_Pressure_Remains_Activated()
         {
-            pressureSensor.Get().Returns(MinimumUnsafetyValue);
-            pressureMonitorization.Check();
+            var activatedAlarmPressureMonitorization = CreateActivatedAlarmPressureMonitorization();
             pressureSensor.Get().Returns(MinimumUnsafetyValue);
 
-            pressureMonitorization.Check();
+            activatedAlarmPressureMonitorization.Check();
 
             notifier.Received(1).Send("Alarm activated");
         }
@@ -61,14 +60,21 @@ namespace TirePressureVariation.Test
         [Test]
         public void Alarm_Activated_With_Safe_Pressure_Is_Deactivated()
         {
-            pressureSensor.Get().Returns(MinimumUnsafetyValue);
-            pressureMonitorization.Check();
+            var activatedAlarmPressureMonitorization = CreateActivatedAlarmPressureMonitorization();
             pressureSensor.Get().Returns(MinimumSafetyValue);
 
-            pressureMonitorization.Check();
+            activatedAlarmPressureMonitorization.Check();
 
             notifier.Received(1).Send("Alarm activated");
             notifier.Received(1).Send("Alarm deactivated");
+        }
+
+        PressureMonitorization CreateActivatedAlarmPressureMonitorization()
+        {
+            pressureSensor.Get().Returns(MinimumUnsafetyValue);
+            pressureMonitorization.Check();
+
+            return pressureMonitorization;
         }
     }
 }

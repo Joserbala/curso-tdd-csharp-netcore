@@ -6,6 +6,7 @@ namespace TirePressureVariation.Test
 {
     public class AlarmShould
     {
+        const int UnsafePressure = int.MinValue;
         INotifier notifier;
         IPressureSensor pressureSensor;
         PressureMonitorization pressureMonitorization;
@@ -39,6 +40,18 @@ namespace TirePressureVariation.Test
             pressureMonitorization.Check();
 
             notifier.DidNotReceive().Send(Arg.Any<string>());
+        }
+
+        [Test]
+        public void Alarm_Activated_With_Dangerous_Pressure_Remains_Activated()
+        {
+            pressureSensor.Get().Returns(UnsafePressure);
+            pressureMonitorization.Check();
+            pressureSensor.Get().Returns(16);
+
+            pressureMonitorization.Check();
+
+            notifier.Received(1).Send("Alarm activated");
         }
     }
 }

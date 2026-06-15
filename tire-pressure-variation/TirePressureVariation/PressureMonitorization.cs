@@ -5,6 +5,7 @@ public class PressureMonitorization
 	readonly SafetyRange safetyRange;
 	readonly INotifier notifier;
 	readonly IPressureSensor pressureSensor;
+	bool alarmActivated;
 
 	public PressureMonitorization(SafetyRange safetyRange, INotifier notifier, IPressureSensor pressureSensor)
 	{
@@ -19,7 +20,11 @@ public class PressureMonitorization
 
 		if (!safetyRange.IsPressureSafe(pressureValue))
 		{
-			notifier.Send("Alarm activated");
+			if (!alarmActivated)
+			{
+				notifier.Send("Alarm activated");
+			}
+			alarmActivated = true;
 		}
 	}
 }

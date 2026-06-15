@@ -29,10 +29,11 @@ namespace TirePressureVariation.Test
             notifier.Received().Send("Alarm activated");
         }
 
-        [Test]
-        public void Alarm_Deactivated_With_Safe_Pressure_Remains_Deactivated()
+        [TestCase(17)]
+        [TestCase(21)]
+        public void Alarm_Deactivated_With_Safe_Pressure_Remains_Deactivated(int pressure)
         {
-            pressureSensor.Get().Returns(17);
+            pressureSensor.Get().Returns(pressure);
 
             pressureMonitorization.Check();
 

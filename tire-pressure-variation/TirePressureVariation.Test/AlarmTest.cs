@@ -46,11 +46,12 @@ namespace TirePressureVariation.Test
             notifier.DidNotReceive().Send(Arg.Any<string>());
         }
 
-        [Test]
-        public void Alarm_Activated_With_Dangerous_Pressure_Remains_Activated()
+        [TestCase(MinimumUnsafetyValue)]
+        [TestCase(MaximumUnsafetyValue)]
+        public void Alarm_Activated_With_Dangerous_Pressure_Remains_Activated(int pressure)
         {
             var activatedAlarmPressureMonitorization = CreateActivatedAlarmPressureMonitorization();
-            pressureSensor.Get().Returns(MinimumUnsafetyValue);
+            pressureSensor.Get().Returns(pressure);
 
             activatedAlarmPressureMonitorization.Check();
 

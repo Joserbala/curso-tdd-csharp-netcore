@@ -57,5 +57,18 @@ namespace TirePressureVariation.Test
 
             notifier.Received(1).Send("Alarm activated");
         }
+
+        [Test]
+        public void Alarm_Activated_With_Safe_Pressure_Is_Deactivated()
+        {
+            pressureSensor.Get().Returns(MinimumUnsafetyValue);
+            pressureMonitorization.Check();
+            pressureSensor.Get().Returns(MinimumSafetyValue);
+
+            pressureMonitorization.Check();
+
+            notifier.Received(1).Send("Alarm activated");
+            notifier.Received(1).Send("Alarm deactivated");
+        }
     }
 }

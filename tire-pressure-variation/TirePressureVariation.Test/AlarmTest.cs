@@ -19,10 +19,11 @@ namespace TirePressureVariation.Test
             pressureMonitorization = new PressureMonitorization(safetyRange, notifier, pressureSensor);
         }
 
-        [Test]
-        public void Alarm_Deactivated_With_Dangerous_Pressure_Activates_The_Alarm()
+        [TestCase(16)]
+        [TestCase(22)]
+        public void Alarm_Deactivated_With_Dangerous_Pressure_Activates_The_Alarm(int pressure)
         {
-            pressureSensor.Get().Returns(16);
+            pressureSensor.Get().Returns(pressure);
             
             pressureMonitorization.Check();
 

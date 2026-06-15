@@ -13,6 +13,6 @@ public record SafetyRange
 
 	public bool IsPressureSafe(int pressureValue)
 	{
-		return minimumValue <= pressureValue;
+		return pressureValue <= maximumValue && pressureValue >= minimumValue;
 	}
 }

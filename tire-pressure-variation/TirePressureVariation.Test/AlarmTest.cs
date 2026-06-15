@@ -71,6 +71,19 @@ namespace TirePressureVariation.Test
             notifier.Received(1).Send("Alarm deactivated");
         }
 
+        [Test]
+        public void A_Deactivated_Alarm_Which_Was_Activated_Previously_Remains_Deactivated()
+        {
+            var activatedAlarmPressureMonitorization = CreateActivatedAlarmPressureMonitorization();
+            pressureSensor.Get().Returns(MinimumSafetyValue);
+            activatedAlarmPressureMonitorization.Check();
+            pressureSensor.Get().Returns(MaximumSafetyValue);
+            
+            activatedAlarmPressureMonitorization.Check();
+            
+            notifier.Received(1).Send("Alarm deactivated");
+        }
+
         PressureMonitorization CreateActivatedAlarmPressureMonitorization()
         {
             pressureSensor.Get().Returns(MinimumUnsafetyValue);

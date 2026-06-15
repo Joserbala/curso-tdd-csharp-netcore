@@ -30,6 +30,7 @@ public class PressureMonitorization
 		else if (alarmActivated)
 		{
 			notifier.Send("Alarm deactivated");
+			alarmActivated = false;
 		}
 	}
 }

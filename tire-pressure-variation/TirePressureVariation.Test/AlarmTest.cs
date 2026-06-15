@@ -20,5 +20,19 @@ namespace TirePressureVariation.Test
             
             notifier.Received().Send("Alarm activated");
         }
+
+        [Test]
+        public void Alarm_Deactivated_With_Safe_Pressure_Remains_Deactivated()
+        {
+            var safetyRange = new SafetyRange(17, 21);
+            var notifier = Substitute.For<INotifier>(); // spy
+            var pressureSensor = Substitute.For<IPressureSensor>(); // stub
+            pressureSensor.Get().Returns(17);
+            var pressureMonitorization = new PressureMonitorization(safetyRange, notifier, pressureSensor);
+
+            pressureMonitorization.Check();
+
+            notifier.DidNotReceiveWithAnyArgs().Send(Arg.Any<string>());
+        }
     }
 }

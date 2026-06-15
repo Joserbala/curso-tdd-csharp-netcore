@@ -10,4 +10,9 @@ public record SafetyRange
 		this.minimumValue = minimumValue;
 		this.maximumValue = maximumValue;
 	}
+
+	public bool IsPressureSafe(int pressureValue)
+	{
+		return minimumValue <= pressureValue;
+	}
 }

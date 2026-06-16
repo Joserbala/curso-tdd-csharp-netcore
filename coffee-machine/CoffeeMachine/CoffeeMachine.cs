@@ -26,4 +26,10 @@ public class CoffeeMachine(IDrinkMaker drinkMaker)
 		isDrinkSelected = true;
 		drinkType = "T";
 	}
+
+	public void SelectChocolate()
+	{
+		isDrinkSelected = true;
+		drinkType = "H";
+	}
 }

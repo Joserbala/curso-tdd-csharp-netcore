@@ -28,6 +28,18 @@ namespace CoffeeMachine.Tests
 
 			drinkMaker.Received(1).Send("T::");
 		}
+		
+		[Test]
+		public void Make_Chocolate_Without_Sugar()
+		{
+			var drinkMaker = Substitute.For<IDrinkMaker>();
+			var coffeeMachine = new CoffeeMachine(drinkMaker);
+			coffeeMachine.SelectChocolate();
+
+			coffeeMachine.MakeDrink();
+
+			drinkMaker.Received(1).Send("H::");
+		}
 
 		[Test]
 		public void Dont_Make_Drink()

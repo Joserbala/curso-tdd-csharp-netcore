@@ -17,19 +17,4 @@ namespace CoffeeMachine.Tests
 			drinkMaker.Received(1).Send("C::");
 		}
 	}
-
-	public class CoffeeMachine(IDrinkMaker drinkMaker)
-	{
-		public void SelectCoffee() { }
-
-		public void MakeDrink()
-		{
-			drinkMaker.Send("C::");
-		}
-	}
-
-	public interface IDrinkMaker
-	{
-		void Send(string command);
-	}
 }

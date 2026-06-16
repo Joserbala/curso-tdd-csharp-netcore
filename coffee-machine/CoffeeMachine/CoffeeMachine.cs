@@ -1,9 +1,10 @@
 ﻿namespace CoffeeMachine;
 
-public class CoffeeMachine(IDrinkMaker drinkMaker)
+public class CoffeeMachine(IDrinkMaker drinkMaker, int spoonsOfSugar = 0)
 {
 	bool isDrinkSelected;
 	string drinkType;
+	int spoonsOfSugar = spoonsOfSugar;
 
 	public void SelectCoffee()
 	{
@@ -27,9 +28,21 @@ public class CoffeeMachine(IDrinkMaker drinkMaker)
 	{
 		if (isDrinkSelected)
 		{
-			var command = drinkType + "::";
+			var sugarPart = "::";
+
+			if (spoonsOfSugar > 0)
+			{
+				sugarPart = ":" + spoonsOfSugar + ":0";
+			}
+
+			var command = drinkType + sugarPart;
 
 			drinkMaker.Send(command);
 		}
+	}
+
+	public void AddOneSpoonOfSugar()
+	{
+		spoonsOfSugar++;
 	}
 }

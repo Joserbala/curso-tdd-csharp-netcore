@@ -15,14 +15,9 @@ public class CoffeeMachine(IDrinkMaker drinkMaker)
 	{
 		if (isDrinkSelected)
 		{
-			if (drinkType == "C")
-			{
-				drinkMaker.Send("C::");
-			}
-			else
-			{
-				drinkMaker.Send("T::");
-			}
+			var command = drinkType + "::";
+
+			drinkMaker.Send(command);
 		}
 	}
 

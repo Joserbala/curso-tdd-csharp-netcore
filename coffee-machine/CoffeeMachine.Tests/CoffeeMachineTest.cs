@@ -16,5 +16,16 @@ namespace CoffeeMachine.Tests
 
 			drinkMaker.Received(1).Send("C::");
 		}
+
+		[Test]
+		public void Dont_Make_Drink()
+		{
+			var drinkMaker = Substitute.For<IDrinkMaker>();
+			var coffeeMachine = new CoffeeMachine(drinkMaker);
+
+			coffeeMachine.MakeDrink();
+
+			drinkMaker.DidNotReceiveWithAnyArgs().Send(Arg.Any<string>());
+		}
 	}
 }

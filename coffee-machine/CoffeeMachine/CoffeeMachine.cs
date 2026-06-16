@@ -11,16 +11,6 @@ public class CoffeeMachine(IDrinkMaker drinkMaker)
 		drinkType = "C";
 	}
 
-	public void MakeDrink()
-	{
-		if (isDrinkSelected)
-		{
-			var command = drinkType + "::";
-
-			drinkMaker.Send(command);
-		}
-	}
-
 	public void SelectTea()
 	{
 		isDrinkSelected = true;
@@ -31,5 +21,15 @@ public class CoffeeMachine(IDrinkMaker drinkMaker)
 	{
 		isDrinkSelected = true;
 		drinkType = "H";
+	}
+
+	public void MakeDrink()
+	{
+		if (isDrinkSelected)
+		{
+			var command = drinkType + "::";
+
+			drinkMaker.Send(command);
+		}
 	}
 }
